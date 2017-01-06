@@ -6,19 +6,16 @@ class Robot
 
   def initialize
     @name = generate_name
-    @@used_names << @name
     while @@used_names.include?(@name) do
       @name = generate_name
-      puts "used names: #{@@used_names}"
     end
+    @@used_names << @name
   end
 
   def generate_name
     name = ''
     2.times { name << generate_letter }
     name << generate_number
-    # puts "name generated: #{@name}"
-
   end
 
   def generate_letter
@@ -36,4 +33,8 @@ class Robot
   def name
     @name
   end
+end
+
+module BookKeeping
+  VERSION = 2
 end
