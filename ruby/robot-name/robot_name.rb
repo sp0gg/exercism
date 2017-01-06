@@ -1,7 +1,7 @@
 class Robot
 
   LETTERS = ('A'..'Z').entries
-  NUMBERS = ('100'..'999').entries
+  NUMBERS = ('0'..'9').entries
   @@used_names = []
 
   def initialize
@@ -14,16 +14,8 @@ class Robot
 
   def generate_name
     name = ''
-    2.times { name << generate_letter }
-    name << generate_number
-  end
-
-  def generate_letter
-    LETTERS[rand(0...LETTERS.size)]
-  end
-
-  def generate_number
-    NUMBERS[rand(0...NUMBERS.size)]
+    name << LETTERS.sample(2).join
+    name << NUMBERS.sample(3).join
   end
 
   def reset
