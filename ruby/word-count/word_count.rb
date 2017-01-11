@@ -1,18 +1,21 @@
 class Phrase
   def initialize(string)
-    string2 = string.downcase.gsub(/[^a-zA-Z_0-9 ,']/, '')
-    puts "string2: #{string2}"
-    @words = string2.split(/[ ,]/).delete_if {|word| word.empty?}.map {|word| word[/^'.*'$/] ? word[1...-1] : word}
-    puts "words: #{@words}"
+    scrubbed_string = string.downcase.gsub(/[^a-zA-Z_0-9 ,']/, '')
+    unfiltered_words = scrubbed_string.split(/[ ,]/)
+    @words = unfiltered_words.delete_if {|word| word.empty?}.map {|word| remove_enclosing_quotes(word)}
   end
 
   def word_count
-    hash = {}
-    @words.uniq.each {|word| hash[word] = @words.count(word)}
-    hash
+    @words.uniq.zip(@words.uniq.map {|word| @words.count(word)}).to_h
+  end
+
+  private
+
+  def remove_enclosing_quotes(word)
+    word[/^'.*'$/] ? word[1...-1] : word
   end
 end
 
 module BookKeeping
-  VERSION = 1 # Where the version number matches the one in the test.
+  VERSION = 1
 end
