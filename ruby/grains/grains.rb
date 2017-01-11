@@ -3,12 +3,11 @@ class Grains
   BOARD_RANGE = (1..64)
 
   def self.square(n)
-    raise ArgumentError unless BOARD_RANGE.include?(n)
-    calc_grains(n)
+    BOARD_RANGE.cover?(n) ? calc_grains(n) : (raise ArgumentError)
   end
 
   def self.total
-    BOARD_RANGE.map {|n| calc_grains(n)}.inject(:+)
+    (Grains.square(BOARD_RANGE.last) * 2) - 1
   end
 
   def self.calc_grains(n)
