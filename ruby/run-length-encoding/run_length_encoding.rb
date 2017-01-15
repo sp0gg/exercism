@@ -1,34 +1,10 @@
 class RunLengthEncoding
   def self.encode(string)
-    pairs = []
-    until string.empty? do
-      letter = string[0]
-      count = 0
-      until letter != string[0]
-        string = string[1..-1]
-        count += 1
-      end
-      pairs << "#{count if count > 1}#{letter}"
-    end
-    pairs.join
+    string.chars.chunk_while {|i, j| i == j}.map {|e| "#{e.count if e.count > 1}#{e.first}"}.join
   end
 
-  def self.decode(str)
-    output = ''
-    string = str
-    until string.empty? do
-      num = string.match(/^(\d+)/)
-      if num
-        num = num[0]
-        string = string[num.size..-1]
-        letter = string[0]
-        num.to_i.times do output << letter end
-      else
-        output << string[0]
-      end
-      string = string[1..-1]
-    end
-    output
+  def self.decode(string)
+    string.scan(/(\d*)(\D)/).map{|n, w| w * (n.empty? ? 1: n.to_i)}.join
   end
 end
 
