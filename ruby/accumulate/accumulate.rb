@@ -1,7 +1,7 @@
 class Array
-  def accumulate(operation = nil)
+  def accumulate
     result = []
-    self.each {|e| block_given? ? result << yield(e) : result << e.send(operation)}
+    each {|e| result << yield(e)}
     result
   end
 end
