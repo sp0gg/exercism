@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\csharp\bob\Bob.cs">
+      <Link>Bob\Bob.cs</Link>
+    </Compile>
+    <Compile Include="..\csharp\bob\BobTest.cs">
+      <Link>Bob\BobTest.cs</Link>
+    </Compile>
     <Compile Include="..\csharp\hello-world\HelloWorld.cs">
       <Link>HelloWorld\HelloWorld.cs</Link>
     </Compile>
