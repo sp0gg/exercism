@@ -53,6 +53,12 @@
     <Compile Include="..\csharp\hello-world\HelloWorld.cs">
       <Link>HelloWorld\HelloWorld.cs</Link>
     </Compile>
+    <Compile Include="..\csharp\leap\LeapTest.cs">
+      <Link>Leap\LeapTest.cs</Link>
+    </Compile>
+    <Compile Include="..\csharp\leap\Year.cs">
+      <Link>Leap\Year.cs</Link>
+    </Compile>
     <Compile Include="HelloWorld\HelloWorldTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
