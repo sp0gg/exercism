@@ -11,13 +11,7 @@ class Array
   private
 
   def filter
-    result = []
-    self.each do |e|
-      if yield e
-        result << e
-      end
-    end
-    result
+    self.each_with_object([]) {|e, result| result << e if yield e }
   end
 
 end
