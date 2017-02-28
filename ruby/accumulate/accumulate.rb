@@ -1,8 +1,6 @@
 class Array
   def accumulate
-    result = []
-    each {|e| result << yield(e)}
-    result
+    each_with_object([]) {|e, result| result << yield(e)}
   end
 end
 
