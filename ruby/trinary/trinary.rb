@@ -4,8 +4,8 @@ class Trinary
   end
 
   def to_decimal
-    return 0 if @number.match(/.*[a-zA-Z3-9].*/)
-    @number.reverse.chars.map.with_index{|b,i| b.to_i * 3**i}.inject(:+)
+    return 0 if @number =~ /[^0-2]/
+    @number.reverse.chars.map.with_index{|t,i| t.to_i * 3**i}.inject(:+)
   end
 end
 
