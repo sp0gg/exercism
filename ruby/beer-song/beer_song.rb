@@ -1,25 +1,36 @@
 class BeerSong
 
+  START_VERSE = 0
+  END_VERSE = 99
+
   def verse(n)
-    first_line(n) + last_line(n)
+    first_line(n) + second_line(n)
   end
 
-  def verses(*n)
-    range = (n[1]..n[0]).to_a.reverse
-    range.map{|i| verse(i)}.join("\n")
+  def verses(last, first)
+    range = (first..last).to_a.reverse
+    range.map{|n| verse(n)}.join("\n")
   end
 
   def lyrics
-    verses(99,0)
+    verses(END_VERSE, START_VERSE)
   end
 
   def first_line(n)
-    "#{quantity(n)} #{bottles(n)} of beer on the wall, #{quantity(n).downcase} #{bottles(n)} of beer.\n"
+    "#{quantity_bottles(n).capitalize} of beer on the wall, #{quantity_bottles(n)} of beer.\n"
   end
 
-  def last_line(n)
+  def second_line(n)
     return "Go to the store and buy some more, 99 bottles of beer on the wall.\n" if n == 0
-    "Take #{units(n)} down and pass it around, #{quantity(n-1).downcase} #{bottles(n-1)} of beer on the wall.\n"
+    "Take #{units(n)} down and pass it around, #{quantity_bottles(n-1)} of beer on the wall.\n"
+  end
+
+  def quantity_bottles(n)
+    "#{quantity(n)} #{bottles(n)}"
+  end
+
+  def quantity(n)
+    n == 0 ? 'no more': n.to_s
   end
 
   def bottles(n)
@@ -28,10 +39,6 @@ class BeerSong
 
   def units(n)
     n == 1 ? 'it' : 'one'
-  end
-
-  def quantity(n)
-    n == 0 ? 'No more': n.to_s
   end
 
 end
