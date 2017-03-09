@@ -1,23 +1,21 @@
 class Prime
   def self.nth(n)
     raise ArgumentError if n == 0
-    return 2 if n == 1
-
-    prime_counter = 1
+    primes = [2]
     candidate_prime = 3
 
-    while prime_counter < n do
+    until primes.length == n do
       if prime?(candidate_prime)
-        prime_counter += 1
-        return candidate_prime if prime_counter == n
+        primes << candidate_prime
       end
       candidate_prime += 1
     end
 
+    primes.last
   end
 
   def self.prime?(n)
-    2.upto(n-1) do |i|
+    (2...n).each do |i|
       return false if n % i == 0
     end
     true
