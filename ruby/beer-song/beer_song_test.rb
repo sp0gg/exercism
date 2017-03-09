@@ -35,7 +35,6 @@ class BeerSongTest < Minitest::Test
   end
 
   def test_a_couple_verses
-    skip
     expected = "99 bottles of beer on the wall, 99 bottles of beer.\n" \
       "Take one down and pass it around, 98 bottles of beer on the wall.\n" \
       "\n" \
@@ -45,7 +44,6 @@ class BeerSongTest < Minitest::Test
   end
 
   def test_a_few_verses
-    skip
     expected = "2 bottles of beer on the wall, 2 bottles of beer.\n" \
       "Take one down and pass it around, 1 bottle of beer on the wall.\n" \
       "\n" \
@@ -58,7 +56,6 @@ class BeerSongTest < Minitest::Test
   end
 
   def test_the_whole_song
-    skip
     expected = <<-SONG
 99 bottles of beer on the wall, 99 bottles of beer.
 Take one down and pass it around, 98 bottles of beer on the wall.
@@ -370,7 +367,6 @@ Go to the store and buy some more, 99 bottles of beer on the wall.
   #
   # Define a constant named VERSION inside of BookKeeping.
   def test_bookkeeping
-    skip
     assert_equal 2, BookKeeping::VERSION
   end
 end
