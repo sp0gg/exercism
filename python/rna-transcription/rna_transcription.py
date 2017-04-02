@@ -2,7 +2,7 @@ import re
 
 
 def to_rna(string):
-    if len(re.findall('[^ACTG]', string)) > 0: return ''
+    if re.findall('[^ACTG]', string): return ''
 
     trans = string.maketrans('ACTG', 'UGAC')
     return string.translate(trans)
