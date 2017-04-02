@@ -2,5 +2,4 @@ import re
 
 
 def is_pangram(string):
-    reg = re.compile('[a-zA-Z]')
-    return len(set(reg.findall(string.upper()))) == 26
+    return len(set(re.findall('[a-zA-Z]', string.upper()))) == 26
