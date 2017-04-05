@@ -2,5 +2,5 @@ import re
 
 
 def word_count(string):
-    words = [word.lower() for word in re.findall('[a-zA-Z0-9]+', string)]
+    words = re.findall('[a-zA-Z0-9]+', string.lower())
     return {w: words.count(w) for w in set(words)}
